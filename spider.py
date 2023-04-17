@@ -8,10 +8,10 @@ class Spider(scrapy.Spider):
         for matches in response.css('.row.spiel'):
             yield {
                 'date': matches.css('.date span::text').get(),
-                'time': ''.join(matches.css('.date::text').getall()).strip(),
-                'teamA': ''.join(matches.css('.teamA *::text').getall()).strip(),
-                'teamB': ''.join(matches.css('.teamB *::text').getall()).strip(),
-                'goalsA': matches.css('.torA::text').get().strip(),
-                'goalsB': matches.css('.torB::text').get().strip(),
+                'time': ''.join(matches.css('.date::text').getall()),
+                'teamA': ''.join(matches.css('.teamA *::text').getall()),
+                'teamB': ''.join(matches.css('.teamB *::text').getall()),
+                'goalsA': matches.css('.torA::text').get(),
+                'goalsB': matches.css('.torB::text').get(),
                 'sppStatusText': matches.css('.sppStatusText::text').get(),
             }
