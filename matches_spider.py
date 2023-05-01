@@ -1,5 +1,11 @@
 import scrapy
 
+def clean(text):
+    if not text: return None
+    text = text.strip()
+    if text.isnumeric(): return int(text)
+    return text
+
 class Spider(scrapy.Spider):
     name = 'matches'
 
@@ -11,15 +17,15 @@ class Spider(scrapy.Spider):
 
     def parse(self, response):
         for matches in response.css('.row.spiel'):
-            rawdate = matches.css('.date span::text').get()
+            fdate = matches.css('.date span::text').get()
             yield {
-                'rawdate': rawdate,
-                # transform rawdate from "Sa DD.MM.YYYY" to "YYYY-MM-DD"
-                'date': f'{rawdate[9:13]}-{rawdate[6:8]}-{rawdate[3:5]}',
-                'time': ''.join(matches.css('.date::text').getall()),
-                'teamA': ''.join(matches.css('.teamA *::text').getall()),
-                'teamB': ''.join(matches.css('.teamB *::text').getall()),
-                'goalsA': matches.css('.torA::text').get(),
-                'goalsB': matches.css('.torB::text').get(),
+                'fdate': fdate,
+                # transform fdate from "Sa DD.MM.YYYY" to "YYYY-MM-DD"
+                'date': f'{fdate[9:13]}-{fdate[6:8]}-{fdate[3:5]}',
+                'time': clean(''.join(matches.css('.date::text').getall())),
+                'teamA': clean(''.join(matches.css('.teamA *::text').getall())),
+                'teamB': clean(''.join(matches.css('.teamB *::text').getall())),
+                'goalsA': clean(matches.css('.torA::text').get()),
+                'goalsB': clean(matches.css('.torB::text').get()),
                 'sppStatusText': matches.css('.sppStatusText::text').get(),
             }
