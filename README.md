@@ -16,4 +16,4 @@ Data scraping from football.ch
 
 ## Run Flask app
 
-    flask run
+    flask run --debug

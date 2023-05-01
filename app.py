@@ -12,6 +12,12 @@ cache = Cache(app, config={
 @app.route("/matches")
 @cache.cached()
 def matches():
-    subprocess.check_output(["scrapy", "runspider", "matches_spider.py", "-O", "matches.json"])
+    command = [
+        "scrapy", "runspider", "matches_spider.py",
+        "-O", "matches.json",
+        "-a", "club=907",
+        "-a", "team=34040",
+    ]
+    return subprocess.getoutput(" ".join(command))
     with open("matches.json") as f:
         return f.read()
