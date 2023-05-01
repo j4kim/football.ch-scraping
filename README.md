@@ -12,7 +12,7 @@ Data scraping from football.ch
 
 ## Run spider
 
-    scrapy runspider spider.py -O matches.json
+    scrapy runspider matches_spider.py -a club=907 -a team=34040 -O matches.json
 
 ## Run Flask app
 

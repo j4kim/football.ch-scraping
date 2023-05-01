@@ -4,8 +4,8 @@ class Spider(scrapy.Spider):
     name = 'matches'
 
     def start_requests(self):
-        club = 907
-        team = 34040
+        club = self.club
+        team = self.team
         url = f'https://matchcenter-anf.football.ch/?v={club}&t={team}&a=pt'
         yield scrapy.Request(url, self.parse)
 
