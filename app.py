@@ -1,6 +1,7 @@
 from flask import Flask
 import subprocess
 from flask_caching import Cache
+import config
 
 app = Flask(__name__)
 cache = Cache(app, config={
@@ -12,12 +13,12 @@ cache = Cache(app, config={
 @cache.cached()
 def matches():
     command = [
-        "/home/j4kim/.virtualenvs/footballenv/bin/scrapy",
-        "runspider", "/home/j4kim/football/matches_spider.py",
-        "-O", "/home/j4kim/football/matches.json",
-        "-a", "club=907",
-        "-a", "team=34040",
+        config.scrapy,
+        "runspider", config.matches_spider,
+        "-O", config.matches_file,
+        "-a", f"club={config.club}",
+        "-a", f"team={config.team}",
     ]
     subprocess.run(command, check=True)
-    with open("/home/j4kim/football/matches.json") as f:
+    with open(config.matches_file) as f:
         return f.read()
