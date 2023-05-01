@@ -13,3 +13,7 @@ Data scraping from football.ch
 ## Run spider
 
     scrapy runspider spider.py -O matches.json
+
+## Run Flask app
+
+    flask run
