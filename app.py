@@ -9,6 +9,10 @@ cache = Cache(app, config={
     "CACHE_DEFAULT_TIMEOUT": 60 * 60 # 1 hour
 })
 
+@app.route("/")
+def index():
+    return "Hello"
+
 @app.route("/matches")
 @cache.cached()
 def matches():
