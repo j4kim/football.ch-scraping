@@ -1,6 +1,7 @@
 from flask import Flask
 import subprocess
 from flask_caching import Cache
+from flask_cors import CORS
 import config
 
 app = Flask(__name__)
@@ -8,6 +9,7 @@ cache = Cache(app, config={
     "CACHE_TYPE": "SimpleCache",
     "CACHE_DEFAULT_TIMEOUT": 60 * 60 # 1 hour
 })
+CORS(app)
 
 @app.route("/")
 def index():
