@@ -2,7 +2,12 @@ import scrapy
 
 class Spider(scrapy.Spider):
     name = 'matches'
-    start_urls = ['https://matchcenter-anf.football.ch/default.aspx?lng=2&cxxlnus=1&v=907&t=34040&ls=20261&sg=58387&a=pt&']
+
+    def start_requests(self):
+        club = 907
+        team = 34040
+        url = f'https://matchcenter-anf.football.ch/?v={club}&t={team}&a=pt'
+        yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
         for matches in response.css('.row.spiel'):
