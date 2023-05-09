@@ -1,5 +1,7 @@
 import subprocess
 import config
+from os.path import getmtime
+import json
 
 def run():
     command = [
@@ -13,7 +15,10 @@ def run():
 
 def get():
     with open(config.matches_file) as f:
-        return f.read()
+        return {
+            "matches": json.load(f),
+            "time": getmtime(config.matches_file),
+        }
 
 def run_and_get():
     run()
