@@ -10,7 +10,6 @@ cryptography==40.0.2
 cssselect==1.2.0
 filelock==3.11.0
 Flask==2.2.3
-Flask-Caching==2.0.2
 Flask-Cors==3.0.10
 hyperlink==21.0.0
 idna==3.4
