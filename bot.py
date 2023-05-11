@@ -23,3 +23,6 @@ def get():
 def run_and_get():
     run()
     return get()
+
+if __name__ == '__main__':
+    run()
