@@ -18,11 +18,15 @@ class Spider(scrapy.Spider):
     def parse(self, response):
         for match in response.css('.row.spiel'):
             fdate = match.css('.date span::text').get()
+            # transform fdate from "Sa DD.MM.YYYY" to "YYYY-MM-DD"
+            date = f'{fdate[9:13]}-{fdate[6:8]}-{fdate[3:5]}'
+            time = clean(''.join(match.css('.date::text').getall()))
+            datetime = f'{date} {time}'
             yield {
                 'fdate': fdate,
-                # transform fdate from "Sa DD.MM.YYYY" to "YYYY-MM-DD"
-                'date': f'{fdate[9:13]}-{fdate[6:8]}-{fdate[3:5]}',
-                'time': clean(''.join(match.css('.date::text').getall())),
+                'date': date,
+                'time': time,
+                'datetime': datetime,
                 'teamA': clean(''.join(match.css('.teamA *::text').getall())),
                 'teamB': clean(''.join(match.css('.teamB *::text').getall())),
                 'goalsA': clean(match.css('.torA::text').get()),
