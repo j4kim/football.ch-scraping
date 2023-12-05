@@ -15,4 +15,4 @@ def index():
 def matches(asso, club, team):
     fresh = request.args.get("fresh") == "1"
     bot = Bot(asso, club, team)
-    return bot.run_and_get() if fresh else bot.get()
+    return bot.get(fresh)

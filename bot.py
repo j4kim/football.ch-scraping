@@ -25,18 +25,14 @@ class Bot:
         ]
         subprocess.run(command, check=True)
 
-    def get(self):
-        if not isfile(self.filename):
+    def get(self, fresh=False):
+        if fresh or not isfile(self.filename):
             self.run()
         with open(self.filename) as f:
             return {
                 "matches": json.load(f),
                 "time": getmtime(self.filename),
             }
-
-    def run_and_get(self):
-        self.run()
-        return self.get()
 
 
 if __name__ == "__main__":
