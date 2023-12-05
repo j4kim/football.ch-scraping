@@ -1,4 +1,4 @@
-matches*.json
+matches
 config.py
 
 # Byte-compiled / optimized / DLL files

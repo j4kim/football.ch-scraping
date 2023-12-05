@@ -5,10 +5,11 @@ import json
 
 
 class Bot:
-    def __init__(self, club, team):
+    def __init__(self, asso, club, team):
+        self.asso = asso
         self.club = club
         self.team = team
-        self.filename = f"matches-{club}-{team}.json"
+        self.filename = f"matches/{asso}/{club}/{team}.json"
 
     def run(self):
         command = [
@@ -37,5 +38,5 @@ class Bot:
 
 
 if __name__ == "__main__":
-    bot = Bot(907, 34040)
+    bot = Bot("anf", 907, 34040)
     bot.run()
