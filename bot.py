@@ -37,5 +37,5 @@ class Bot:
 
 
 if __name__ == "__main__":
-    bot = Bot(config.club, config.team)
+    bot = Bot(907, 34040)
     bot.run()
