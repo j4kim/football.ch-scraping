@@ -19,6 +19,8 @@ class Bot:
             "-O",
             self.filename,
             "-a",
+            f"asso={self.asso}",
+            "-a",
             f"club={self.club}",
             "-a",
             f"team={self.team}",

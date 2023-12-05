@@ -1,4 +1,5 @@
 import scrapy
+import config
 
 
 def clean(text):
@@ -16,7 +17,8 @@ class Spider(scrapy.Spider):
     def start_requests(self):
         club = self.club
         team = self.team
-        url = f"https://matchcenter-anf.football.ch/?v={club}&t={team}&a=pt"
+        base = config.baseUrls[self.asso]
+        url = f"{base}/?v={club}&t={team}&a=pt"
         yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
