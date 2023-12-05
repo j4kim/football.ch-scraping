@@ -1,18 +1,18 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
-import bot
+from bot import Bot
 
 app = Flask(__name__)
 CORS(app)
+
 
 @app.route("/")
 def index():
     return "Hello"
 
-@app.route("/matches")
-def matches():
-    return bot.get()
 
-@app.route("/matches/fresh")
-def freshMatches():
-    return bot.run_and_get()
+@app.route("/matches/<asso>/<int:club>/<int:team>")
+def matches(asso, club, team):
+    fresh = request.args.get("fresh") == "1"
+    bot = Bot(asso, club, team)
+    return bot.run_and_get() if fresh else bot.get()
