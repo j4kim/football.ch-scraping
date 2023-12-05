@@ -1,6 +1,6 @@
 import subprocess
 import config
-from os.path import getmtime
+from os.path import getmtime, isfile
 import json
 
 
@@ -26,6 +26,8 @@ class Bot:
         subprocess.run(command, check=True)
 
     def get(self):
+        if not isfile(self.filename):
+            self.run()
         with open(self.filename) as f:
             return {
                 "matches": json.load(f),
