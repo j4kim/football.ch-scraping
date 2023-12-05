@@ -8,6 +8,7 @@ class Bot:
     def __init__(self, club, team):
         self.club = club
         self.team = team
+        self.filename = f"matches-{club}-{team}.json"
 
     def run(self):
         command = [
@@ -15,7 +16,7 @@ class Bot:
             "runspider",
             config.matches_spider,
             "-O",
-            config.matches_file,
+            self.filename,
             "-a",
             f"club={self.club}",
             "-a",
@@ -23,11 +24,11 @@ class Bot:
         ]
         subprocess.run(command, check=True)
 
-    def get():
-        with open(config.matches_file) as f:
+    def get(self):
+        with open(self.filename) as f:
             return {
                 "matches": json.load(f),
-                "time": getmtime(config.matches_file),
+                "time": getmtime(self.filename),
             }
 
     def run_and_get(self):
