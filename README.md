@@ -1,6 +1,6 @@
 # Football.ch scraping
 
-Data scraping from football.ch using [scrapy](https://scrapy.org/) and API to extract data on demand.
+Data scraping and API to extract data from [football.ch](https://football.ch) for regional associations (ANF, etc.).
 
 ## Install
 
