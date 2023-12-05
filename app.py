@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, url_for, redirect
 from flask_cors import CORS
 from bot import Bot
 
@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route("/")
 def index():
-    return "Hello"
+    return redirect(url_for("static", filename="docs.html"))
 
 
 @app.route("/matches/<asso>/<int:club>/<int:team>")
