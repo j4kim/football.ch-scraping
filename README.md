@@ -6,7 +6,7 @@ Data scraping and API to extract data from [football.ch](https://football.ch) fo
 
     python -m venv .venv
 
-    ./.venv/bin/activate
+    source ./.venv/bin/activate
 
     pip install -r ./requirements.txt
 
