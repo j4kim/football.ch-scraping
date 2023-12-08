@@ -38,5 +38,12 @@ class Bot:
 
 
 if __name__ == "__main__":
-    bot = Bot("anf", 907, 34040)
-    bot.run()
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("asso")
+    parser.add_argument("club", type=int)
+    parser.add_argument("team", type=int)
+    args = parser.parse_args()
+
+    Bot(args.asso, args.club, args.team).run()
