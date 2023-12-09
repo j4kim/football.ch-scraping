@@ -12,13 +12,27 @@ Data scraping and API to extract data from [football.ch](https://football.ch) fo
 
     cp config.example.py config.py
 
-## Run spider
+## Run
+
+Scraping is performed using [Scrapy](https://docs.scrapy.org/).
+
+The `matches_spider.py` scripts retrieves calendar for a certain team of a cerain club in a certain association (anf, acvf, etc.).
+
+The club and the team are represented by args `v` and `t` on football.ch.
+
+Example:
 
     scrapy runspider matches_spider.py -a asso=anf -a club=907 -a team=34040 -O matches.json
+
+Will extract data from https://matchcenter-anf.football.ch/?v=907&t=34040&a=pt.
+
+The script `bot.py` runs `matches_spider.py` and saves the result in `matches` directory.
 
 ## Run Flask app
 
     flask run --debug
+
+The app offers an API to get extracted data.
 
 ## Production setup
 
