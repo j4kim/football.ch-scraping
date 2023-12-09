@@ -38,6 +38,6 @@ The app offers an API to get extracted data.
 
 The project is deployed on a Jelastic cloud hosted by Infomaniak, here: https://football-ch-scraping.jcloud.ik-server.com.
 
-A contab entry is added to keep data up to date for fclesbrenets.ch:
+A contab entry is added to keep data up to date for [fclesbrenets.ch](https://github.com/j4kim/fclesbrenets.ch):
 
     @hourly cd /var/www/webroot/ROOT && python bot.py anf 907 34040 > joblog 2>&1
