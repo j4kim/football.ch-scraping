@@ -19,3 +19,11 @@ Data scraping and API to extract data from [football.ch](https://football.ch) fo
 ## Run Flask app
 
     flask run --debug
+
+## Production setup
+
+The app is deployed on a Jelastic cloud hosted by Infomaniak, here: https://football-ch-scraping.jcloud.ik-server.com.
+
+A contab entry is added to keep data up to date for fclesbrenets.ch
+
+    @hourly python /var/www/webroot/ROOT/bot.py anf 907 34040 > /var/www/webroot/joblog 2>>&1
