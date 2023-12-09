@@ -3,6 +3,8 @@ import config
 from os.path import getmtime, isfile, dirname
 import json
 
+dir = dirname(__file__)
+
 
 class Bot:
     def __init__(self, asso, club, team):
@@ -10,20 +12,23 @@ class Bot:
         self.club = club
         self.team = team
         self.filename = f"matches/{asso}/{club}/{team}.json"
+        self.abspath = f"{dir}/{self.filename}"
 
     def run(self):
         command = [
             config.scrapy,
             "runspider",
-            dirname(__file__) + "/matches_spider.py",
+            f"{dir}/matches_spider.py",
             "-O",
-            dirname(__file__) + "/" + self.filename,
+            self.abspath,
             "-a",
             f"asso={self.asso}",
             "-a",
             f"club={self.club}",
             "-a",
             f"team={self.team}",
+            "--loglevel",
+            "ERROR",
         ]
         subprocess.run(command, check=True)
 
