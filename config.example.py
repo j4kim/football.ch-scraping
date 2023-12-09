@@ -1,5 +1,4 @@
 scrapy = "scrapy"
-matches_spider = "matches_spider.py"
 baseUrls = {
     "anf": "https://matchcenter-anf.football.ch",
     "aff-ffv": "https://matchcenter.aff-ffv.ch",

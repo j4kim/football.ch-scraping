@@ -1,5 +1,4 @@
 scrapy = "/home/j4kim/.virtualenvs/footballenv/bin/scrapy"
-matches_spider = "/home/j4kim/football/matches_spider.py"
 baseUrls = {
     "anf": "https://matchcenter-anf.football.ch",
     "aff-ffv": "https://matchcenter.aff-ffv.ch",

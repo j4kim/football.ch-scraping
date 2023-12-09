@@ -1,6 +1,6 @@
 import subprocess
 import config
-from os.path import getmtime, isfile
+from os.path import getmtime, isfile, dirname
 import json
 
 
@@ -15,9 +15,9 @@ class Bot:
         command = [
             config.scrapy,
             "runspider",
-            config.matches_spider,
+            dirname(__file__) + "/matches_spider.py",
             "-O",
-            self.filename,
+            dirname(__file__) + "/" + self.filename,
             "-a",
             f"asso={self.asso}",
             "-a",
