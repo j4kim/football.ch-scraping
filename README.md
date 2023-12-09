@@ -22,7 +22,7 @@ Data scraping and API to extract data from [football.ch](https://football.ch) fo
 
 ## Production setup
 
-The app is deployed on a Jelastic cloud hosted by Infomaniak, here: https://football-ch-scraping.jcloud.ik-server.com.
+The project is deployed on a Jelastic cloud hosted by Infomaniak, here: https://football-ch-scraping.jcloud.ik-server.com.
 
 A contab entry is added to keep data up to date for fclesbrenets.ch:
 
